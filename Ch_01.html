@@ -1,0 +1,44 @@
+<script>
+    // var 변수를 지양하자
+    // const 사용을 권장
+    // let 과 const 는 ES2015 부터 생김
+    // ES 2015 이전에는 var 예약어만 사용이가능
+    // 하지만 자바스크립트가 발전 하면서 더 좋은 기능이 추가 됨
+
+    // var 는 함수 Scope 를 가짐
+    // let 과 const 는 Block 단위 스코프를 가짐
+    // Block Scope 는 TDZ 까지 있으면서 안전하게 코드 작성이 가능
+    
+    // 아무런 에러가 발생하지 않음
+    // 값은 다르지만 변수명은 일치
+    var name = '이름';
+    var name = '이름 2';
+    var nmae = '이름 3';
+
+    // 가장 마지막 선언한 name 을 가져옴
+    console.log('name : ' + name);
+
+    // 재할당 및 재선언 까지 가능
+    // 코드들이 굉장히 길어지면 구분이 어려움
+    // 그러므로 var 를 let 과 const 로 바뀌어야 함
+    
+    // let 은 이미 선언 이 된 것이므로 또 선언 불가
+    // let 은 이미 선언 해 두고 언제든지 재 할당이 가능
+    let name = '렛';
+    let name = '렛2';
+    let name = '렛 3';
+
+    // 재 할당이 가능
+    name = '렛 4';
+
+    // 컨스트는 재 할당 및 선언이 불가
+    const name = '컨스트';
+    const name = '컨스트2';
+
+    
+
+
+
+    console.log(name);
+
+</script>
