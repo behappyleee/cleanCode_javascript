@@ -1,3 +1,5 @@
+<script src="./index.js"></script>
+<script src="./index2.js"></script>
 <script>
     // 전역 변수를 사용하면 안돼는 이유
     // 전역 공간은 되도록 사용을 하면 안됨
@@ -12,12 +14,22 @@
     // 브라우저 환경에서는 Window 가 최상위
     // Node.js 환경에서는 global 이 최상위
 
-    
+    // Browser 에서 간단히 사용할 수 있는 객체들은
+    // 이미 Window 객체로 만들어져 있음
 
+    // 전역 공간 --> 최상위 (브라우저 환경, Node.js 환ㄱㅇ이 나누어ㅕ 이ㅆ음)
 
+    var globalVar = 'globalVar';
 
-
-
+    // 전역 공간을 더럽히면 안됨 !!!!!
+    // 어디서나 접근이 가능하기 때문에 !
+    // 스코프 분리가 굉장히 위험
+    // 사람은 분리되었다 생각하지만 Runtime 시에는 달라짐
+    // 스코프 분리 위험 줄이는 법
+    // 1. 전역 변수 사용 X , 2. 지역 변수만 사용, 3.. window,global 을 조작하지 않음
+    // const 랑 let 만 사용
+    // IIFE, Module, Closure 스코프를 나누어 둠
 
 
 </script>
+

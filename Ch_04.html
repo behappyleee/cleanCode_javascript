@@ -1,0 +1,112 @@
+<script>
+    // 임시변수 제거하기
+    // 임시변수는 어느 특정 공간에 Scope 안에서 전역변수처럼 사용되는 것
+
+    function getElements() {
+        // result 는 임시객체 임
+        // const result = {
+        //     // 더 명확하게 바뀜
+        //     title: document.querySelector('.title'),
+        //     text: document.querySelector('.text'),
+        //     value: document.querySelector('.value'),
+
+        // };
+        // querySelector 를 사용해 자바스크립트 객체로 가져옴
+        // result.title = document.querySelector('.title');
+        // result.text = document.querySelector('.text');
+        // result.value = document.querySelector('.value');
+        return {
+            // 그냥 객체로 Return 시 더 정확히 명확해 짐
+            // 이 안에서 CRUD 하기가 애매해짐
+            // 안에 임시 객체가 생성 시 CRUD 를 할 수있음
+            // 그냥 바로 리턴시 그럴 확률이 줄어들게 됨
+            // 더 명확하게 바뀜
+            title: document.querySelector('.title'),
+            text: document.querySelector('.text'),
+            value: document.querySelector('.value'),
+        };
+    }
+
+    function getDateTime(targetDate) {
+        // let 으로 선언시 재할당을 할 수있기에 const 로 바꿈
+        // let month = targetDate.getMonth();
+        // let day = targetData.getDate();
+        // let hour = targetDate.Hours();
+
+        const month = targetDate.getMonth();
+        const day = targetData.getDate();
+        const hour = targetDate.Hours();
+        
+        // 더 안전하게 그냥 바로 Return 을 해줌
+        return {
+            month: month > 10 ? month : '0' + month,
+            day:day > 10 ? day : '0' + day,
+            hour: hour > 10 ? hour : '0' + hour,
+        }
+    
+    
+    }
+
+    // 함수를 한 번 더 추상화 하는것을 계속 활용화 함
+    function getDateTime(params) {
+        // 시간 을 가져옴
+        const currentDateTime = getDateTime(new Date());
+        return {
+            month: currentDateTime.month + ' 분 전',
+            day:currentDateTime.day + ' 분 전',
+            hour: currentDateTime.hour + ' 분 전',
+
+        }
+    }
+
+    function genRandomNumber() {
+        // 이런 식으로 임수변수를 사용 시 누군가 조작 가능성이 있기에
+        // const randomNumber = Math.floor(Math.random() * (max +1) + min);
+        // randomNumber. --> 이런 식으로 조작 가능성이 있음 ...
+        // return randomNumber;
+        
+        
+        // 함수를 만들 시 딱 한가지 기능만 하는 함수만 만드는 것이 가장 좋음
+        return Math.floor(Math.random() * (max +1) + min);
+    
+    }
+
+    // 처음 자바스크립트 작성시
+    function getSomeValue() {
+        let tempVal = '';
+
+        // 보통 입문자들을 코드를 이런식으로 작성하게 됨
+        for(let index=0; index<array.length; index++) {
+            
+            // 이런 식으로 계속 임시 변수에 뭔가를 핟게 됨
+            // tempVal += ;
+            // tempVal += ;
+            // tempVal += ;
+            // tempVal += ;
+        }
+        // 항상 임시변수를 사용하지 않는 방법을 고민하여야 함
+        // 임시변수는 상당히 안좋음
+
+        // 임시변수를 제거해야하는 것은 명령형으로가 득한 로직
+        // 어디서 어떻게 잘못되었는지 디버깅이 어려움
+        
+        // 타인이 추가적인 코드를 작성하고 싶은 유혹에 바지기 쉬옴
+        // 함수는 항상 하나의 역할만 해야함
+        // 임시변수란 키워드가 그것을 유혹하게 만듦
+        // 이런식으로 임시변수를 계속해서 작성하게 됨
+        // 완전 명령형게 가까운 코드임
+        
+        // !!! 해결책
+        // 함수를 나누거나, 바로 반환, 혹은 고차 함수를 사용
+        // 고차함수는 (map, filter , reducer 등이 있음)
+            
+        
+        // if(temp ../)
+    
+
+    }
+
+
+
+
+</script>
