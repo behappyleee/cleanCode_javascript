@@ -1,0 +1,60 @@
+<script>
+    // Hoisting --> 선언과 할당이 분리 됨
+    // 선언과 할당이 분리 됨 --> Runtime 시 (동작할 때) 에 분리 됨
+
+    // 코드 작성 시 --> 스코프 예상 (Runtime 시 에는 예상대로 스코프가 움직여주지 않음)
+    // let & const 를 사용할 시 TDZ 를 겪지 않음
+
+    // var --> 함수 스코프
+    // let & const --> 블럭 스코프
+
+    // 호이스팅이란 런타임시에 자바스크립트의 선언이 맨 위로 끌어올려짐
+    // 문제는 코드를 작성 시에 예측하지 못한 실행 결과가 노출이 됨
+    // 이런 문제를 탈피하기 위하여 var 를 사용하지 않음
+    // 함수도 호이스팅이 되기에 주의 하기 (함수 표현식을 사용)
+    var global = 0;
+
+    function outer() {
+        console.log('global outer : ' + global); // --> undefined
+        var global = 5;
+        
+        function inner() {
+            var global = 10;
+            console.log('global inner : ' + global);    // --> 10
+        }
+
+        inner();
+        global = 1;
+        console.log(global);    // --> 1
+    }
+
+    console.log(outer());
+
+    function duplicateVar() {
+        var a;
+        console.log('a : ' + a);   // undefined
+        var a = 100;
+        console.log('a : ' + a);    // 100 출력
+    }
+
+    var sum;
+
+    console.log(typeof sum);    // function 출력 함수도 호이스팅이 됨
+
+    // 맨 마지막에 선언 된 함수 실행 (마지막 호이스팅 된게 덮어 씌워 짐)
+    console.log(sum());
+
+    function sum() {
+        return 1+2;
+    }
+    function sum() {
+        return 3+5;
+    }
+
+    // 추천 방법은 함수 선언식이 아닌 함수 표현식 const ㅣㅇ용해서 사용하기
+
+
+
+
+
+</script> 
