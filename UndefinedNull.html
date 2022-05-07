@@ -1,0 +1,39 @@
+<script>
+
+    // Undefined --> 있든 없든 일단 만들고 없는것
+    // Null --> 값이 없는 거임
+
+    console.log(!null)      // true
+    console.log(!!null)     // false
+     
+    // 많은 혼란스러움이 생김 
+    null === false  // false
+    !null === true  // true
+
+    // 자바스크립트는 대부분 불가능한 것도 가느앟ㄴ 언어임
+    null + 123  // 수학 연산도 가능 null 을 수학적으로 0 으로 취금
+
+    // Undefined 는 아무것도 지정하지 않았을 때 기본값임
+    let varb;
+    varb; // undefined 임 아무것도 지정하지 않았기에
+    typeof varb // undefined 출력 
+    // undefined 는 값을 선언하였지만 정의되지 않은 상태
+    // 할당 되지 않은 상태
+
+    // Null 은 0 이라는 숫자로 치환이 되지만
+    // undefined 는 NaN 으로 취급이 됨
+    undefined + 10  // NaN Not A Number
+
+    !undefined // true 로 출력이 됨
+
+    // 없는 값에 대하여 null 로 할지 undefined 로 할지 스스로 Convention 을 만들어가는것이 주주
+
+    // Undefined, Null 은 결국 ==> 값이 없거나 정의되지 않은 상태
+    // 혹은 없다는 것을 명시적으로 표현 한것임 (null 같은 경우)
+
+    typeof undefined // type 은 undefined
+    typeof null // type 은 Object 임
+
+
+
+</script>
