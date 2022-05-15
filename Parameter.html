@@ -1,0 +1,41 @@
+<script>
+    /*
+        매개변수의 순서가 경계다
+        호출하는 함수의 네이밍고 ㅏ인자의 손서의 연관성을 고려한다.
+
+        1. 매개변수를 2개를 넘지 않도록 설정 해주기
+        2. 규칙적이지 않은 Parameter 는 arguments, rest parameter 를 이용
+        3. 매개변수를 객체에 담아서 넘겨주기 !
+        3. 랩핑하는 함수 
+
+    */
+
+    function someFunc(someArg1, someArg2, someArg3, someArg4) {
+
+
+    }
+
+    // 최악의 경우에는 순서가 다를 수 도 있지만 Parameter 는 순서를 꼭 지켜주기 
+    function getFunc(someArg1, someArg2) {
+        someFunc(someArg1, someArg2);
+    }
+    
+    // 매개 변수를 객체로 넘길시에는 순서가 크게 상관이 없음 
+
+
+
+    // 경계 생각하기 
+    // 대부분 Parameter 가 2 개일시 처음과 끝이 있음 
+    // 웬만한 인자는 2개를 넘지 않도록 설정 
+    genRandomNumber(1, 50);
+    getDates('2021-10-01', '2021-10-31');
+    // 인자를 넘길 시 두개 정도는 시작과 끝이 있음 
+    genShuffleArray(1, 5);
+
+    // ES2015 + 
+    // 파라미터가 너무 많을시 객체를 이용하거나, ... 새로운 문법 이용하거나
+    // 자바스크립트 기본 내장 객체인 arguments 객체를 이용하기 
+
+
+
+</script>

@@ -1,0 +1,26 @@
+<script>
+
+ function FactoryFunction() {
+    // 자바스크립트는 private 변수를 뜻하는 앞에 _ 를 붙여 줌 private Fireld 임 관습 
+    this._name = name;
+ }
+
+ class FactoryFuction {
+     
+ }
+
+ const test = {
+     set setA(a) {this._name = a},
+     get getA() {
+         return this._name;
+     }
+ }
+
+ test.setA = 'Test !';
+ test.setA = 'Re Test !!!';
+ console.log(test.getA)
+
+
+
+</script>
+
