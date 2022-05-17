@@ -15,11 +15,40 @@
         mountNode
     );
 
+    // It is transformed to this JS:
+    // 문법 에러 발생 if 문을 객체에 넣으면 에러가 발생
+    React.createElement('div', {id: if(condition) {'msg'}}, 'Hello World !');
+
+
+    // 이 코드는 작동 3항 연산자 이기에 값으로 귀결되기에
+    // 표현식은 값으로 귀결 되며 값으로 수렴되는 식이기에 
+    ReactDOM.render(<div id={condition ? 'msg' : null}> Hello World ! </div>)
+
     // It is transformed to this JS
     ReactDOM.render(React.createElement('div', {id : 'msg'}, 'Hello world !') ,mountNode);
 
-        
+    // 콜론을 기준으로 값이 들어가야하는데 if 문이 들어가
+    // 에러가 발생 당연히 에러가 발생 !
+    const obj = {id : if(condition) {'msg'}}
 
+    // React JSX 내부는 3항 연산자 사용이 가능하지만
+    // 만약 사용원할 시 IFFE --> 즉시함수를 사용
+    // EX
+    (() => {
+        switch(this.state.color) {
+            case 'red' :
+                return '#FF0000',
+            case 'green' :
+                return '#GREENN!',
+        }
+    })
+
+    // 값과 식을 이용할 시 if 분기문을 사용하지 않고 바로 사용이 가능
+    // map filter reduce 
+    // 고차함수 이용가 방법 중 하나
+    {objectRows.map((obj, i) => (
+        <ObjectRow key={i} data={obj} />
+    ))}
 
 
 </script>
