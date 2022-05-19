@@ -5,7 +5,36 @@
     // 조건 ? 참 : 거짓
     // 값식문을 잘 파악하여야 함
 
+    // 항상 사람을 위해 코드를 작성해야 함
 
+    const welcomeMe = (isLogin) => {
+        const name = isLogin ? getName() : '이름없음';
+        return `안녕하세요 ${name}`;
+    }
+
+    // 3항 연산자는 Nullable 한 상황에서도 매우 유용함
+
+    // 3항 연산자는 함수를 실행 하는 것에는 비추
+    // 반환이 있는 경우에 추천 (식이나 값이)
+    // bad case
+    function alertMessage(isAdult) {
+        // 숏코딩 사례 다음과 같은 경우는 3항연산자 비추
+        isAdult ? alert('입장 가능') : alert('입장 불가');
+        
+        // 그냥 if 문사용 권장
+        if(isAdult ) {
+            alert('입장 가능')
+        } else {
+            alert('입장 불가')
+        }
+    
+    }
+
+
+    // 3항 연산자는 무언가 값을 담아내거나 함수가 내뱉는 값이 바로 값 반환시에 사용 권장
+    // 이런 식으로 사용 권장
+    // isAdult ? '입장 가능' : '입장 불가';
+    // 3개의 피연산자 !!! 
 
 
 </script>
