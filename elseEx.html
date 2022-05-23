@@ -4,6 +4,46 @@
     // else if 문이 굉장히 많이 늘어질 때 는
     // switch case 문으로 바꾸어서 사용하는 것을 추천
     
+    // else 문 피하기
+
+    // 굳이 else 문을 사용할 필요 없음
+    // 자바스크립트 함수는 return 사용 시 바로 함수 가끝나기에
+    // else 를 굳이 사용할 필요 없음
+    // else 를 지속적으로 사용시 프로그래밍 흐름이 끊길 수 가 있음
+    function getActiveUserName(user) {
+        if(user.name) {
+            return user.name;
+        } 
+        return '이름 없음';
+    }
+
+    function getActiveUserName(user) {
+        if(user.name) {
+            // 참
+            return user.name;
+        } else {
+            // 거짓
+            return '이름 없음';
+        } 
+        // else 문을 사용시 흐름이 꺠질 확률이 있음
+        return '이름 없음';
+    }
+
+    // 함수가 2가지 일 을 할때 else 를 사용시 흐름이 끊기
+    // 
+    function getHelloCustomer(user) {
+        // 성인이 아닐시에만 report 함수 작동
+        
+        // 이 else 문제는 성인이 아닐시에도 else 문을 실행시켜야 하지만 else 문에 걸려 버림
+        // 성인이 아닐 시에만 report 함수를 호출하고 '안녕하세요를 반환을 하여야하지만'
+        // else 문에 걸려버려 report 후 else 문을 실행시키지 못함
+        if(user.age < 20) {
+            report(user);
+        } else {
+            return '안녕하세요';
+        }
+    }
+
 
 
 </script>
