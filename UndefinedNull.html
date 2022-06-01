@@ -34,6 +34,32 @@
     typeof undefined // type 은 undefined
     typeof null // type 은 Object 임
 
+    // 부정 조건문
+    if(!isCondition) {
+
+    }
+
+    // 부정 조건문을 그렇게 추천 하지는 않음
+    // NaN - Not a Number - 숫자가 아닌 값을  계산
+    // 부정 조건문은 생각을 여러번 하는 것은 좋지가 않음 
+
+    // 숫자 일 때 만 동작하는 로직
+    // 한번 더 뒤집어서 생각해야 하므로 복잡
+    if(!isNaN(3)) {
+
+    }
+
+    // 차라리 함수를 만들어서 사용
+    function isNumber(num) {
+        return !Number.isNaN(num) && typeof num === 'number';
+    }
+
+    // 부정 조건문은 if - else 문을 사용하듯이
+    // 부정 조건문은 뒤집는 것이므로 사용을 지양
+    // 부정 조건문은 주로 early return 시에 사용 또는 유효성 검사에 사용
+    // 코드를 작성시에 헷갈리는 코드는 지양 명시적인 코드를 사용 실수할 확률이 큼 
+
+
 
 
 </script>
