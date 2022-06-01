@@ -33,7 +33,7 @@
 
     typeof undefined // type 은 undefined
     typeof null // type 은 Object 임
-
+    var isCondition = false;
     // 부정 조건문
     if(!isCondition) {
 
@@ -58,6 +58,26 @@
     // 부정 조건문은 뒤집는 것이므로 사용을 지양
     // 부정 조건문은 주로 early return 시에 사용 또는 유효성 검사에 사용
     // 코드를 작성시에 헷갈리는 코드는 지양 명시적인 코드를 사용 실수할 확률이 큼 
+
+    // DefaultCase 고민
+    function sum(x, y) {
+        // 값이 없을 시 고려하여 처리하여주기
+        // 값이 없을 시 기본 설정 값 고려 (엣지 케이스라고도 함)
+        x = x || 1;
+        y = y || 1;
+
+        console.log('sum x : ' + x);
+        console.log('sum y : ' + y);
+
+        return x+y;
+    }
+
+    sum(100, 200);
+    sum();
+    
+    // 사용자의 입력을 받는 값 들은 반드시 default 값 고려하기 !!
+    console.log('parseInt Test : '  + parseInt('Test!'));
+
 
 
 
