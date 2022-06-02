@@ -1,0 +1,52 @@
+<script>
+    // 자바스크립트의 배열은 객체 개념
+
+    const arr = [1, 2, 3];
+ 
+    arr[3] = 'test';
+    arr['property'] = function() {
+        return 'hello';
+    }
+    arr['obj'] = {};
+    arr[{}] =[1,2,3];
+
+    arr['func'] = function() {
+        return 'hello';
+    }
+
+    for(let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+
+    console.log(arr['obj']);
+    console.log(arr[{}])
+
+    console.log(arr);
+    console.log(arr['property'])
+
+    console.log(arr.func());
+    
+    // 자바스크립트 배열은 객체와 매우 유사
+    const obj = {
+        arr: [1,2,3],
+        property: 'string value',
+        obj: {},
+        '{}': [1,2,3],
+        func: function() {
+            return 'hello';
+        }
+    }   
+
+    // 자바스크립트 배열은 내부 동작은 객체와 매우유사
+    console.log(obj.func());    
+
+    // 배열을 다룰 때는 큰 주의가 필요
+
+    // 배열 확인 시에는
+    // Array isArray 를 사용
+    // 문자열도 length 로 잡혀서 배열인지 반드시 확인
+    Array.isArray(arr);
+    
+
+
+</script>
