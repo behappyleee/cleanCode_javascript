@@ -1,0 +1,67 @@
+<script>
+
+    // 임시변수 사용을 줄이는 것이 중요
+    // 배열 고차 함수
+    const price = ['2000', '1000', '3000', '5000', '4000'];
+
+    function getWonPrice(priceList) {
+        let temp = [];
+        for(let i=0; i<priceList.length; i++) {
+            temp.push(priceList[i] + ' 원');        
+        }
+        return temp;
+    }
+
+    // 고차원 함수로 바꾸기 !
+    function getWonPrice(priceList) {
+        // let temp = [];
+        // index i 가 굉장히 추상적으로 생각될 수  있음 
+        // for(let i=0; i<priceList.length; i++) {
+        //     temp.push(priceList[i] + ' 원');        
+        // }
+        
+        // 고차원 함수 map 을 이용하여 Refcatroing 구현이 가능 
+        return priceList.map((price) => price + ' 원');
+    
+        // 추가 요구 사항 1000 원 이상 항목만 표출 하기 
+        
+        const isOverList = priceList.filter(isOverOneThousand);
+        
+        return isOverList.map(suffixWon);
+
+        // 추가 요구사항 가격 순 정렬 
+        const sortList = priceList.filter(isOverOneThousand);    
+    
+    }
+
+    const suffixWon = (price) => price + ' 원';
+    const isOverOneThousand = (price) => Number(price) > 1000;
+
+    const result = getWonPrice(price);
+
+    console.log('result Check : ' + result);
+
+    // 배열 메서드 체이닝 
+    // for 와 if 문 으로 가득하면 코드 가독성이 떨어지게 됨 
+    // MethodChaining
+
+    const ascendingList = (a, b) => a - b;
+
+    // 내장 메서드들을 잘 활용하는 것이 중요 
+    function getWonPrice(priceList) {
+        // 메서드 체이닝을 사용 (첫번 쨰 필터를 걸고 두번쨰는 정렬을 사용 세번째는 새로운 배열을 조작하여 만들어 냄)
+        // 메서드 체이닝을 잘 활용하면 명시적으로 표현을 해주므로 파이프 라인처럼 보일 수도 있음 
+        return priceList
+            .filter(isOverOneThousand)
+            .sort(ascendingList)    // sort 정렬
+            .map(suffixWon);        // map 을 통하여 배열 요소들을 다시 정리 
+    }
+
+    const wonResult = getWonPrice(price);
+
+
+
+
+
+
+</script>
