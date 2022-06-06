@@ -44,12 +44,8 @@
     // 배열 메서드 체이닝 
     // for 와 if 문 으로 가득하면 코드 가독성이 떨어지게 됨 
     // MethodChaining
-
-<<<<<<< HEAD
     // const ascendingList = (a, b) => a - b;
-=======
-    const ascendingList = (a, b) => a - b;
->>>>>>> fb8c6c3b2c34833da306cb4a2d7e94d9c266bd90
+
 
     // 내장 메서드들을 잘 활용하는 것이 중요 
     function getWonPrice(priceList) {
@@ -57,7 +53,6 @@
         // 메서드 체이닝을 잘 활용하면 명시적으로 표현을 해주므로 파이프 라인처럼 보일 수도 있음 
         return priceList
             .filter(isOverOneThousand)
-<<<<<<< HEAD
            // .sort(ascendingList)    // sort 정렬
             .map(suffixWon);        // map 을 통하여 배열 요소들을 다시 정리 
     }
@@ -117,16 +112,11 @@
 
 
     // Shorthand Properties / Concise Method ==> 항사 고려하기 
-    
 
-=======
-            .sort(ascendingList)    // sort 정렬
-            .map(suffixWon);        // map 을 통하여 배열 요소들을 다시 정리 
-    }
 
-    const wonResult = getWonPrice(price);
 
->>>>>>> fb8c6c3b2c34833da306cb4a2d7e94d9c266bd90
+
+
 
 
 
