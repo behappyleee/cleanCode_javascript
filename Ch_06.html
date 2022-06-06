@@ -1,0 +1,32 @@
+<script>
+    // Computed Property Name
+    // handle Change 는 onChange 될 때마다 event 객체를 받고 
+    // e 에 계산된 값을 받음 
+    const handleChange = (e) => {
+        setState({
+            // 대괄호를 사용 시 변하는 e 의 값을 사용이 가능함 
+            [e.target.name] : e.targe.value,
+        });
+    };
+
+    const noop = createAction('INCREMENT');
+
+    const reducer = handleActions({
+        [noop] : (state, action) => ({
+            counter: state.counter + action.payload,
+        })
+    },
+        {counter: 0},
+    )
+
+    const obj = {
+        [funcName] () {
+            console.log('func');
+        }
+    }
+
+    console.log(  obj[funcName]()  );
+
+
+
+</script>

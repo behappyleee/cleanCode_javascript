@@ -1,0 +1,51 @@
+<script>
+    // LookUp Table - 배열 데이터 구조에서 Key 와 Value 로 관리된 배열이 나열 된 형태
+    
+    // if-else if 문 보다는 switch-case 문 사용 권장 
+    function getUserType(type) {
+        if(type === 'ADMIN') {
+            return '관리자';
+        } else if (type === 'INSTRUCTOR') {
+            return '강사';
+        } else if (type === 'STUDENT') {
+            return '수강생';
+        }
+    }
+
+    // 기능과 스펙을 추가 할 때 마다 코드가 늘 어짐
+    function getUserType(key) {
+      switch(key) {
+          case 'ADMIN' :
+              return '관리자';
+              break;
+          case 'INSTRUCTOR':
+              return '강사'
+              break;
+          case 'STUDENT' :
+              return '수강생'
+              break;
+      }
+    }
+
+    // 해결 책으로 LookUp Table 을 사요 ㅇ
+    // Object Lookup Table
+    function getUserType(type) {
+        console.log('getUser TYPE LookUp Table !');
+        // USER TYPE 은 상수로 누가봐도 건들지 말라는 표시 가틍ㅁ
+        // SNAKE 로 상수가 작성되어 있음 
+        // 상수를 따로 관리 할 시 유지 보수 및 리팩토링이 용이 함 
+        const USER_TYPE = {
+            ADMIN: '관리자',
+            INSTRUCTOR: '강사',
+            STUDENT : '수강생',
+        };
+        return USER_TYPE[type] || '해당 없음';
+    }
+
+    console.log('total getUser Type : ' + getUserType('ADMIN'));
+    console.log('lookup : ' + getUserType('test'));
+
+
+
+
+</script>
