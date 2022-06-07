@@ -1,0 +1,64 @@
+<script>
+    // Object.freeze
+    const STATUS = Object.freeze({
+        PENDING: 'PENDING',
+        SUCCESS: 'SUCCESS',
+        FAIL: 'FAIL',
+        OPTIONS: {
+            GREEN: 'GREEN',
+            RED: 'RED',
+        }
+    })
+
+    // Object.freeze 사용시 객체 내에 값은 절대 편하지 않음
+    STATUS.PENDING = 'P2';
+
+    console.log('STATUS : ' + JSON.stringify(STATUS));
+
+    // Shallow copy / deep copy
+    // Object.freeze 도 깊은 복사를 관여하지 못함
+    // Deep Freezing 은 되지 않음
+    Object.isFrozen(STATUS.OPTIONS);
+
+    // Freeze 이라도 깊은 복사는 관여하지 못함 !
+    // Freezing 을 하였더라도 값은 변함
+    STATUS.OPTIONS.GREEN = 'G';
+    STATUS.OPTIONS.YELLOW = 'Y';
+
+    // 중첩된 Freezing 을 해주어야 함
+    // 1. 대중 적인 라이브러 확인 (lodash)
+    // 2. 직접 유틸 함수 생성
+
+    // EX
+    const STATUS = deepFreeze({
+        PENDING: 'PENDING',
+        SUCCESS: 'SUCCESS',
+        FAIL: 'FAIL',
+        OPTIONS: {
+            GREEN: 'GREEN',
+            RED: 'RED',
+        }
+    })
+
+    function deepFreeze(targetObj) {
+        // 1. 객체를 순회
+        Object.keys(targetObj).forEach(key => {
+            // 객체에 타입 을 비교
+            // 객체에 타입을 비교하여 객체일 시 재귀를 돌림 
+            if() {
+                deepFreeze(targetObj[key])
+            }
+        })
+        // 2. 값이 객체인지 확인
+
+        // 3. 객체이면 재귀를 돌림
+
+        // 4. 그렇지 않으면 Object.freeze 를 그대로 사용
+
+
+        return Object.freeze(targetObj);
+    }
+
+
+
+</script>
