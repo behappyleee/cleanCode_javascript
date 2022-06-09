@@ -1,0 +1,29 @@
+<script>
+    // Prototype 조작은 지양하는게 좋음
+    // 지양이유는 자바 스크립트가 이미 많이 발전하여 건드리지 않는게 좋음
+    
+    // 자바스크립트 Class 개념이 나오기 전
+    // 직접 생성자 함수를 만들어 주었음
+    function Car(name, brand) {
+        this.name = name;
+        this.brand = brand;
+    }
+    // 함수를 추가시에는 prototype 을 직접 만들어 주어서 넣어주었음 
+    Car.prototype.sayName = function() {
+        return this.brand + '-' + this.name;
+    }
+
+    Car('아반떼', '현대').sayName;
+    console.log( Car.prototype.sayName() );
+
+    // 자바스크립트 Class 개념이 생성 된 후
+    class CarClass {
+        constructor(name, brand) {
+            this.name = name;
+            this.brand = brand;
+        }
+        sayName() {
+            return this.brand + '-' + this.name;
+        }
+    }
+</script>
