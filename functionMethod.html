@@ -1,0 +1,41 @@
+<script>
+    // 자바스크립트는 함수는 굉장히 많은 역할을 함
+    // 자바스크립트의 함수 이용도는 상당히 넓음
+
+    // 함수, 메서드, 생성자
+
+    // 함수 - 1급 객체 
+    // 변수나 데이터에 담길 수 있음
+    // 매개변수로도 전달이 가능(콜백 함수), 함수가 함수를 변환 (고차 함수)
+
+    // 일반 함수
+    function func() {
+        // 함수의 this 는 global 을 바라봄
+        console.log('일반 함수 this : ' + JSON.stringify( this.toString()  ));
+        return this;
+    }
+
+    // 객체의 메서드
+    const obj = {
+        method() {
+            // 메서드의 this 는 호출한 객체를 바라봄
+            console.log('method this : ' + JSON.stringify(this)  );
+            return this;
+        },
+    }
+
+    // 생성자 함수 (Class - 자바스크립트에 클래스가 나와 사용은 더 이상 필요 엇음 )
+    function Func() {
+        // 생성자 함수의 this 는 생성 될 인스턴스를 가리킴
+        console.log('Constructor this : ' + JSON.stringify(this));
+        return this;
+    }
+
+    // 일반 함수 실행
+    func();
+    obj.method();
+
+    const instance = new Func();
+
+
+</script> 

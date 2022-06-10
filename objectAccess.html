@@ -1,0 +1,61 @@
+<script>
+    // 객체 직접 접근 지양 하기
+
+    const model = {
+        isLogin: false,
+        isValidation: false,
+    }
+
+    function login() {
+        model.isLogin = true;
+        model.isValidation = true;
+    }
+
+    function logout() {
+        model.isLogin = false;
+        model.isValidation = false;
+    }
+
+    // 위 코드는 객체에 너무 쉽게 접근을 하고 있음 
+
+    // 직접 접근 하지 않는 방법은 함수를 따로 빼내 줌
+    // 함수의 위임을 하고 추상화를 시킴 이런 식으로만 함수를 따로 빼내 주어도 안전하게 사용이 가능
+    // model 이 변화할 때 마다 사용이 가능 
+    // 데이터에 접근 시 에는 항상 안전하게 접근이 가능하여야 함 
+    function setLogin(bool) {
+        model.isLogin = bool;
+    }
+
+    function setValidToken(bool) {
+        model.isValidation = bool;        
+    }
+
+    function login() {
+        setLogin(true);
+        setValidToken(true);
+    }   
+
+    // EX) flux ==> Action ==> Reducer ==> state
+    // 이렇게 힘들게 상태를 변화를 함
+    // 왜 이렇게 힘들게 상태를 변경하는 이유는 redux 는 무엇인 가 담아두는 store 임
+    // Redux 는 예측 가능한 상태 컨테이너를 만드는 데 집중 함    
+    
+    // 자바스크립트로 코드 작성 시 에도 예측 가능한 코드를 작성 하는 것이 좋음 예측 가능한 앱을 만드는 게 좋음 (디버깅이 용이)
+    // 그 중 에 하나 가 분리 임 
+
+    // 그러므로 이러한 Object 접근 시 에는 접근을 지양 
+
+    // 직접 접근 하는 방법만 지양 하여도 굉장히 안전한 코드 구현이 가능
+    // 따로 메서드로 뺀다는 지 ....
+    // 자바스크립트 객체 접근 시 에는 getter proprty 를 사용 
+    // 접근 시에도 getter 를 통하여서만 접근하도록 허용 
+    // 그렇다면 proprty 들을 안전하게 사용이 가능 ...
+    
+
+
+
+
+
+
+
+</script>
