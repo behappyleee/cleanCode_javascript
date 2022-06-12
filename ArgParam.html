@@ -90,13 +90,96 @@
 
     createCar({name: 'CAR', brand: 'Tesla', type: 'SUV'})
 
+    // Default Value (Default Value 를 설정해 놓음 )
+    // 수 많은 라이브러리들이 기본적으로 Default Value 들을 많이 셋팅해 놓음 
+    function createCarousel(options) {
+        options = options || {};
+        var margin = options.margin || 0;
+        var center = options.center || false;
+        var navElement = options.navElement || 'div';
 
+        return {
+            margin,
+            center,
+            navElement
+        }
+    }
 
+    // 함수 인자를 안넘길 시 함수에 parameter 가 있을 시 arguments 를 넘겨주지 않을 시 undefined 가 발생 함 
+    // 위 함수에서 방어코드로 작용한 default value 가 적용이 됨 parameter 가 없으므로 default 밸류가 넘어 옴 
+    createCarousel();
 
+    // 객체 구조분해 할당 적용 시 
+    // ES 2015 부터 객체 구조분해 적용 시 코드를 간결하게 변경이 가능 
+    function createCarousel(
+        // default value 를 설정해 놓음, default parameter 가 아무것도 들어오지 않을 시 객체 구조분해 할당으로 default value 가 적용이 됨 
+        // default parameter 를 사용 시 명시적으로 설정이 가능 
+        {margin = 0, center = false, navElement = 'div'} = {}
+    ) {
+        // .. some code
+        return {
+            margin,
+            center,
+            navElement
+        }
+    }
 
+    createCarousel();
 
+    function createCar_test({
+        // required 문법을 사용 시 required 문법 사용 시 해당 parameter 는 반드시 넘겨주어야 함 안그럴 시 Error 가 발생 함 
+        items = required('items'),
+        margin = required('margin'),
+        center = false,
+        navElement = 'div',
+    } = {}) {
+        // .. some code
+        return {
+            margin,
+            center,
+            navElement
+        }
+    }
 
+    createCar_test({
+        // required 인 items 와 margin 을 넘겨주지 않아서 에러가 발생을 함 
+        // 인자가 들어오지 않으면 에러가 발생을 함
+        center: true,
+        navElement: 'span',
+    })
 
+    // Rest Parameter (가변 인자 몇개가 Paramter 로 들어올지 모르는 함수)
+    // rest parameter 는 spread operator 와는 완전히 다름 
+    function sumTotal(...args) {
+        // rest parameter 는 array 로 데이터가 들어옴 
+        // reduce 는 에러가 남 args 는 배얼이 아니기에 reduce 를 사용하지 못함 
+
+        return args.reduce(
+            (acc, curr) => acc + curr,
+        )
+    }
+
+    // rest parameter 는 다른 매개변수와 조합이 가능 
+    function sumTotal_test(initialValue, ...args) {
+        // rest parameter 는 array 로 데이터가 들어옴 
+        // reduce 는 에러가 남 args 는 배얼이 아니기에 reduce 를 사용하지 못함 
+
+        return args.reduce(
+            (acc, curr) => acc + curr,
+        )
+    }
+
+    // Parameter 가 몇개 들어올 지 모르는 상황에서는 rest parameter 사용 고려가 가능 
+    sumTotal(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+    // Rest Paramter 의 가장 큰 매력은 추가적인 인수를 받을 수 가 있음 
+    sumTotal(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);    
+
+    sumTotal_test(300, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);    
+    
+    // 인자가 가변적으로 들어올 시 rest parameter 사용을 권장 
+
+    
 
 
 
