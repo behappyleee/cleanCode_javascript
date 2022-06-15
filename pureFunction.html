@@ -1,0 +1,65 @@
+<script>
+    // 자바스크립트는 상당히 많은 부분이 동적으로 작동 함
+    // 자바스크립트는 주로 브라우저 위에서 다루게 됨
+    // 순수 함수 - 부작용을 일으키지 않는 순수 함수 (사이드 이펙트를 일으키지 않음)
+
+    let num1 = 10;
+    let num2 = 20;
+
+    // 두 개 다 순수 함수가 아님
+    function impureSum1() {
+        return num1 + num2;
+    }
+
+    function impureSum2() {
+        return num1 + num2;
+    }
+    impureSum1();
+    // 만약 중간에 값을 바꾸면]
+    num1 = 30;  // 값이 바뀜
+    impureSum1();
+
+    // 순수한 함수는 항상 같은 값을 반환하여야 하지만 중간에 값을 바꿀시
+    // 값을 바꾸면 값이 바뀌어서 반환되어 순수 함수가 아님
+    // 사이드 이펙트를 일으키므로 함수가 예측이 안됨 --> 이러한 함수를 비순수 함수라고 함
+
+    // 순수 함수 ! (모든 것을 인자로 받아 같은 값을 반환 하도록 함)
+    function pureSum1(num1, num2) {
+        return num1 + num2;
+    }
+
+    // 동일한 값을 내 뱉도록 함 (예측이 가능 함)
+    pureSum1(10, 20);
+    pureSum1(30, 100);
+
+    function changeValue(num) {
+        num++;
+        return num;
+    }
+
+    changeValue(1); // 같은 값을 반환 함
+    changeValue(2);
+
+    // 자바스크립트 객체는 primitive 값이랑 다르게 작동을 함 
+    // primitive 타입 의 값과 vs Reference Type 값 학습 하기
+    
+    // 객체 배열을 다루는 함수를 만들 시 새롭게 만들어 서 반환하는 것을 추천
+    
+    const obj = { one : 1};
+
+    function changeObj(targetObj) {
+        targetObj.one = 100;
+        return targetObj;
+        // 새로운 Object 를 만들어사 반환
+        return { ...targetObj, one: 100};
+    }
+
+    changeObj(obj) ;    // { one : 1} return 
+
+    
+
+
+
+
+
+</script>
