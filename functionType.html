@@ -1,0 +1,59 @@
+<script>
+    // Callback 함수
+    // callback 함수란 함수 실행권을 다른 함수에게 위임
+
+    // listner 라는 callback 함수르 넘겨줌
+    someElement.addEventListener('click', function() {
+        console.log('addEvent Listner !')
+    });
+
+    DOM.prototype.addEventListener = function(
+        eventType, cbRFunc
+    ) {
+        if(eventType == 'click') {
+            console.log('click 객체 !');
+            const clickEventObject = {
+                target: {}
+            }
+            cbFunc(clickEventObject);
+        }
+    }
+
+    function register() {
+        // 기존 confrimModal 없이
+        // const isConfirm = confirm('회원가입에 성공 !');
+        // if(isConfirm) {
+        //     redirectUserInfoPage();
+        // }
+
+        // confirmModal 생성 후
+        // 함수를 실행 시켜서 넘기면 안됨 뒤에 괄호 제거하고 콜백함수 넘겨주기
+        confirmModal('회원 가입에 성공', redirectUserInfoPage)
+
+    }
+
+    function login() {
+        // const isConfrim = confirm('로그인에 성공 ! ');
+        // if(isConfirm) {
+        //     redirectIndexPage();
+        // }
+
+        confirmModal('로그인에 성공', redirectIndexPage)
+
+    }
+
+    // CallBack Function
+    function confirmModal(message, cbFunc) {
+        const isConfirm = confirm(message);
+        if(isConfirm && cbFunc) {
+            cbFunc();
+        }
+    
+    }
+
+
+
+
+
+</script>
+

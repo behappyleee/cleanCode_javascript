@@ -1,0 +1,86 @@
+<script>
+    // ArrowFunction (화살표 함수)
+    // 화살표 함수는 간단히 사용이 가능 간단하게 사용이 가능 
+
+    // 무조건 화살표 함수를 사용할 필요는 없음 
+    const user = {
+        name: 'Poco',
+        getName: () => {
+            return this.name;
+        },
+    }
+
+    // undefined 가 발생이 됨, return 값 인 name 을 찾지 못하고 상위 어딘가를 바라 봄  
+    user.getName();
+
+    // 자바스크립트 화살표 함수를 사용할 시 Scope 를 Lexical Scope 를 가지게 됨
+    // Lexical Scope 로 상위의 문맥을 따르게 됨, 상위의 스코프를 따르고 기존의 방식을 따르지 않게 됨
+    // 메서드에서 화살표 함수를 사용시 this 사용을 주의 하여야 함 
+
+    // arguements 객체를 사용할 수 도 없음
+    // call apply bind 도 사용이 불가능 함, 화살표 함수는 내부적으로도 많은 것들을 사용이 불가 함
+
+    // arguments 를 사용원할 시 rest parameter 를 사용을 권장 
+    // 화살표 함수를 사용 시에는 맹목적으로 arguments 같은 객체를 사용 시 에는 주의 하여야 함 
+
+    // 화살표 함수로 만든 것은 생성자 함수 사용을 할 수 가 없음 
+    const Person = (name, city) => {
+        this.name = name;
+        this.city = city;
+    }
+
+    //ㄴ const person = new Person('poco', 'korea');
+
+    // Class 를 다룰 시 주의점이 있음
+    class Parent {
+        parentMethod() {
+            console.log('parent Method');
+        }
+
+        parentMethodArrow = () => {
+            console.log('parent Method Arrow');
+        }
+
+        // 자식 클래스에서 override 원할 시 arrow function 을 사용을 하면 안됨 
+        overrideMethod = () => {
+            console.log('parent override method')
+            return 'Parent';
+        }
+        
+        overrideMethod_nml (){
+            console.log('parent overridemethod_nml')
+            return 'Parent';
+        }
+
+
+    }
+
+
+    class Child extends Parent {
+        childMethod() {
+            super.parentMethod();
+        }
+
+
+        // 에러가 발생 함 arrow funciton 은 바로 class 구현을 할 시 생성자 함수 내부에서 초기화가 되어버림
+        // Arrow Function 으로 만든 this 는 Arrow Function 으로 만드는 클래스 메서드들은 문제가 발생함 
+        childMethod_arrow() {
+            super.parentMethodArrow();
+        }
+
+
+        overrideMethod() {
+            console.log('overrideMethod child');
+            return 'Child';
+        }
+    }
+
+    new Child().childMethod();  // Parent Method 정상 적으로 부모 Parent Method 콘솔에 찍힘 
+   
+    new Child().childMethod_arrow();    // 부모의 arrow 함수를 호출 시 바로 에러가 발생 함 
+   
+   // override 하여도 화살표 함수는 부모의 메서드가 호출이 됨 
+    new Child().overrideMethod();   // 하지만 Arrow Function 을 만든 부모와 자식 각각 하나씩 생성 시 결국에는 Child 에서 override 하여 자신의 입맛대로 확장을 하여도 부모에 메서드가 호출이됨
+
+
+</script>

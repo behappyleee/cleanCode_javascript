@@ -1,0 +1,75 @@
+<script>
+
+    // Void - 함수가 반환이 없는 것
+    
+    // Return - 함수가 무엇인가 반환을 하는 것
+    
+    
+
+    function handleClick() {
+       // return setState(false);
+        console.log('handle !!!');
+  
+    }
+
+    // window.api 에 있는 alert 함수는 Void 함수 이기에 굳이 return 을 사용할 필요는 없음 
+    // 굳이 반환이 없는 함수에 return 을 붙일 필요는 없음 
+    // 자바스크립트는 기본적으로 아무런 return 값이 없을 시 undefined 를 리턴을 함 
+    function showAlert(message) {
+        return alert(message);
+    }
+    
+    function test(sum1, sum2) {
+        const reulst = sum1 + sum2;
+
+        return;
+    }
+    
+    // undefined 가 return 이 됨 자바스크립트는 기본적으로 undefined 를 return 을 함 
+    console.log(test(1,2));
+
+    // return 이 없는 함수를 또 호출하여 return 을 할 시
+    function testVoidFunc() {
+        return test(1,2);
+    }
+
+    // undefined 가 발생이 됨 return 없는 함수를 다시 return 을 하고 있으므로 
+    console.log('test void : ' + testVoidFunc())
+
+    // 중요한 사항은 내가 사용하고 있는 api 들이 return 이 있는지 없는 지 파악하는 것도 중요
+    // return 이 있는지 없는지 확인하는 습관이 있어야 함
+    
+    // 자바스크립트 에서 실제로 void 연산자가 존재 함
+    // void 가 있을 시 함수가 반환이 없다는 것을 의미
+    
+    // 자바스크립트 Array push 메서드가 있음 
+    // push 메서드는 반환값이 존재 함 
+    
+    function testPush() {
+        const arr = [1, 2];
+        return arr.push(10);
+    }
+
+    // 3 이 리턴이 됨 (push 를 사용 시 length 가 return 이 됨)
+    console.log(testPush());
+
+    // 항상 return 값이 존재하는 API
+    function isAdult(age) {
+        return age > 19;
+    }
+
+    // 항상 반환값이 있는 API 들은 이름으로 추론이 가능하여야 함
+    // 항상 반환이 있는 API 들은 RETURN 값을 바로 받아서 값으로 사용이 가능
+    const adultTestResult = isAdult(20);
+
+    // 함수를 작성 시 에는 반드시 함수가 반환이 있는지 없는지 identity 를 고려하여 작성을 하는 것을 권장
+    
+
+
+
+
+
+
+
+
+</script>
